@@ -1,10 +1,52 @@
 # FirstBankOfSuncoast
 
 P: user needs to be able to add and subtract from a given sum. User cannot be allowed to take those given sums less that zero. the addition and subtraction of the sum or transaction should be stored in a single list.  
-E:
+E:user balance in savings and checking starts at 100 dollars.
+user adds 100 dollars to check and new checking balance is 100 + 100 = 200
+user withdraws 101 dollars from savings the user would be directed to try again since it would lead to a neg. balance
+list<>
+
 D:
+class Transaction
+
+1. Load transaction CSV (should there be two different csv for saving and checking)
+2. Save transaction CSV
+3. update account object checking
+4. update account object savings
+5. Display balance
+6. Display transactions (refer to the question at 1.)
+
+---------Account object---------
+Name
+Date account was created
+Checking Balance
+Saving Balance
+
+---
+
+Greeting
+
+Menu
+(C)hecking
+(S)aving
+(T)ransfer
+
+Checking/Saving account
+Your checking balance is {checkingBalance}
+(D)eposit
+Please enter how much you would like to deposit
+Thank for your patronage
+(W)ithdraw
+Please enter how much you would like to withdraw
+add console readline to list and SUM list
+Your new balance is {checkingBalance}
+if withdraw amount > balance: display sorry the withdraw amount exceeds your current Balance!
+Please type in another number
+
 A:
-C: \***\*\*\*\*\*\*\***\_\_\_\_\***\*\*\*\*\*\*\*** Assignments**\*\***\*\*\*\***\*\***\_\_\_\_**\*\***\*\*\*\***\*\***
+C:
+
+\***\*\*\*\*\*\*\***\_\_\_\_\***\*\*\*\*\*\*\*** Assignments**\*\***\*\*\*\***\*\***\_\_\_\_**\*\***\*\*\*\***\*\***
 Explorer Mode
 
     The application should store a history of transactions in a SINGLE List<Transaction>. Your task is to design the Transaction class to support both checking and savings as well as deposits and withdraws.

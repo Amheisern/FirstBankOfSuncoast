@@ -16,6 +16,11 @@ class Transaction
 5. Display balance
 6. Display transactions (refer to the question at 1.)
 
+class Program
+DisplayGreeting
+PromptForString
+PromptForInteger
+
 ---------Account object---------
 Name
 Date account was created
@@ -30,6 +35,7 @@ Menu
 (C)hecking
 (S)aving
 (T)ransfer
+(Q)uits
 
 Checking/Saving account
 Your checking balance is {checkingBalance}
@@ -44,6 +50,7 @@ if withdraw amount > balance: display sorry the withdraw amount exceeds your cur
 Please type in another number
 
 A:
+
 C:
 
 \***\*\*\*\*\*\*\***\_\_\_\_\***\*\*\*\*\*\*\*** Assignments**\*\***\*\*\*\***\*\***\_\_\_\_**\*\***\*\*\*\***\*\***

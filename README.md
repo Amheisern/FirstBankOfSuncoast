@@ -48,6 +48,9 @@ add console readline to list and SUM list
 Your new balance is {checkingBalance}
 if withdraw amount > balance: display sorry the withdraw amount exceeds your current Balance!
 Please type in another number
+notes
+
+1. should be a transaction database that calls on a transaction object
 
 A:
 

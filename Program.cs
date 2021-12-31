@@ -3,6 +3,7 @@
 namespace FirstBankOfSuncoast
 {
     class Program
+
     {
         static void DisplayGreeting()
         {
@@ -34,9 +35,19 @@ namespace FirstBankOfSuncoast
             }
         }
         //--------------------------- methods and Classes -----------------------------
+        static void ShowMenu()
+        {
+            Console.WriteLine("**************************");
+            Console.WriteLine("What would you like to do?");
+            Console.WriteLine("1. Checking ");
+            Console.WriteLine("2. Saving ");
+            Console.WriteLine("3. Transfer ");
+            Console.WriteLine("4. Quit ");
+            Console.WriteLine("**************************");
+        }
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to C#");
+
         }
     }
 }

@@ -3,8 +3,15 @@
 namespace FirstBankOfSuncoast
 {
     class Program
-
     {
+        public class Transaction
+        {
+            public string Account { get; set; }
+            public string Amount { get; set; }
+            public string Type { get; set; }
+            // public DateTime Date { get; set; } = DateTime.Now;
+        }
+
         static void DisplayGreeting()
         {
             Console.WriteLine("----------------------------------------");
@@ -48,6 +55,16 @@ namespace FirstBankOfSuncoast
         static void Main(string[] args)
         {
 
+
+            DisplayGreeting();
+
+            var keepGoing = true;
+
+            while (keepGoing)
+            {
+                ShowMenu();
+                var choice = Console.ReadLine();
+            }
         }
     }
 }

@@ -1,9 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace FirstBankOfSuncoast
 {
     class Program
     {
+        class TransactionDatabase
+        {
+            public List<Transaction> Transactions { get; set; } = new List<Transaction>();
+
+
+        }
         public class Transaction
         {
             public string Account { get; set; }
@@ -54,11 +61,12 @@ namespace FirstBankOfSuncoast
         }
         static void Main(string[] args)
         {
-
-
+            var database = new TransactionDatabase();
+            //database.LoadTransaction();
+            var keepGoing = true;
             DisplayGreeting();
 
-            var keepGoing = true;
+
 
             while (keepGoing)
             {
@@ -67,12 +75,30 @@ namespace FirstBankOfSuncoast
                 switch (choice)
                 {
                     case "1":
+                        Console.WriteLine("**************************");
+                        Console.WriteLine("Welcome to your checking account?");
+                        Console.WriteLine("Please choose an action!");
+                        Console.WriteLine("1. Withdraw ");
+                        Console.WriteLine("2. Deposit ");
+                        Console.WriteLine("3. Display ");
+                        Console.WriteLine("**************************");
+
                         break;
                     case "2":
+                        Console.WriteLine("**************************");
+                        Console.WriteLine("What would your saving account?");
+                        Console.WriteLine("Please choose an action!");
+                        Console.WriteLine("1. Withdraw ");
+                        Console.WriteLine("2. Deposit ");
+                        Console.WriteLine("3. Display ");
+                        Console.WriteLine("**************************");
+
                         break;
                     case "3":
+                        // ??
                         break;
                     case "4":
+                        keepGoing = false;
                         break;
 
                 }

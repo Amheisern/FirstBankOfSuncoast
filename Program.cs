@@ -3,20 +3,13 @@ using System.Collections.Generic;
 
 namespace FirstBankOfSuncoast
 {
-    class Program
+    partial class Program
     {
         class TransactionDatabase
         {
             public List<Transaction> Transactions { get; set; } = new List<Transaction>();
 
 
-        }
-        public class Transaction
-        {
-            public string Account { get; set; }
-            public string Amount { get; set; }
-            public string Type { get; set; }
-            // public DateTime Date { get; set; } = DateTime.Now;
         }
 
         static void DisplayGreeting()

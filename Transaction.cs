@@ -12,6 +12,12 @@ namespace FirstBankOfSuncoast
             public string Type { get; set; }
             // public DateTime Date { get; set; } = DateTime.Now;
 
+            public string Description()
+            {
+                var descriptionString = ($"{Type} of ${Amount} to {Account}");
+
+                return descriptionString;
+            }
 
         }
     }

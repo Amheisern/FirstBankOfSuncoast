@@ -8,7 +8,6 @@ namespace FirstBankOfSuncoast
         {
             public List<Transaction> Transactions { get; set; } = new List<Transaction>();
 
-
         }
     }
 }

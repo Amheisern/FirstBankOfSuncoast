@@ -91,7 +91,7 @@ namespace FirstBankOfSuncoast
                         Console.WriteLine("Please choose an action!");
                         Console.WriteLine("1. Withdraw ");
                         Console.WriteLine("2. Deposit ");
-                        Console.WriteLine("3. Display ");
+                        Console.WriteLine("3. Display Balance ");
                         Console.WriteLine("**************************");
                         var checkingChoice = Console.ReadLine();
 
@@ -118,31 +118,22 @@ namespace FirstBankOfSuncoast
 
                         else if (checkingChoice == "3")
                         {
+                            // displays checking sum
+                            var totalCheckingDeposits = database.Transactions.
+                                        Where(transaction => transaction.Account == "Checking" && transaction.Type == "Deposit").
+                                        Sum(transaction => transaction.Amount);
+                            var totalCheckingWithdraw = database.Transactions.
+                                        Where(transaction => transaction.Account == "Checking" && transaction.Type == "Withdraw").
+                                        Sum(transaction => transaction.Amount);
 
+                            Console.WriteLine($" Your checking balance is {totalCheckingDeposits - totalCheckingWithdraw} ");
                         }
                         else
                         {
                             Console.WriteLine("please choose a valid action");
                         }
-                        // displays checking sum
-                        var totalCheckingDeposits = database.Transactions.
-                                    Where(transaction => transaction.Account == "Checking" && transaction.Type == "Deposit").
-                                    Sum(transaction => transaction.Amount);
-                        var totalCheckingWithdraw = database.Transactions.
-                                    Where(transaction => transaction.Account == "Checking" && transaction.Type == "Withdraw").
-                                    Sum(transaction => transaction.Amount);
 
-                        Console.WriteLine($" Your checking balance is {totalCheckingDeposits - totalCheckingWithdraw} ");
 
-                        // displays saving sum
-                        var totalSavingsDeposits = database.Transactions.
-                                   Where(transaction => transaction.Account == "Savings" && transaction.Type == "Deposit").
-                                   Sum(transaction => transaction.Amount);
-                        var totalSavingsWithdraw = database.Transactions.
-                                    Where(transaction => transaction.Account == "Savings" && transaction.Type == "Withdraw").
-                                    Sum(transaction => transaction.Amount);
-
-                        Console.WriteLine($" Your savings balance is {totalSavingsDeposits - totalSavingsWithdraw} ");
 
                         break;
                     case "2":
@@ -151,7 +142,7 @@ namespace FirstBankOfSuncoast
                         Console.WriteLine("Please choose an action!");
                         Console.WriteLine("1. Withdraw ");
                         Console.WriteLine("2. Deposit ");
-                        Console.WriteLine("3. Display ");
+                        Console.WriteLine("3. Display Balance");
                         Console.WriteLine("**************************");
                         var savingsChoice = Console.ReadLine();
 
@@ -178,13 +169,22 @@ namespace FirstBankOfSuncoast
 
                         else if (savingsChoice == "3")
                         {
+                            // displays saving sum
+                            var totalSavingsDeposits = database.Transactions.
+                                       Where(transaction => transaction.Account == "Savings" && transaction.Type == "Deposit").
+                                       Sum(transaction => transaction.Amount);
+                            var totalSavingsWithdraw = database.Transactions.
+                                        Where(transaction => transaction.Account == "Savings" && transaction.Type == "Withdraw").
+                                        Sum(transaction => transaction.Amount);
 
+                            Console.WriteLine($" Your savings balance is {totalSavingsDeposits - totalSavingsWithdraw} ");
                         }
                         else
                         {
                             Console.WriteLine("please choose a valid action");
                         }
                         break;
+
                     case "3":
                         // Display the number of transactions 
                         Console.WriteLine($"There are {database.Transactions.Count} transactions");

@@ -97,7 +97,14 @@ namespace FirstBankOfSuncoast
 
                         if (checkingChoice == "1")
                         {
-                            var withdraw = PromptForInteger("How much would you like to withdraw from checking");
+                            var transaction = new Transaction();
+
+
+                            transaction.Account = "Checking";
+                            transaction.Amount = PromptForInteger("How much would you like to withdraw from checking");
+                            transaction.Type = "Withdraw";
+
+
 
                         }
                         // displays checking sum

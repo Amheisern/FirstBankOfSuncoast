@@ -60,7 +60,12 @@ namespace FirstBankOfSuncoast
                 Account = "Saving",
                 Type = "Deposit",
             };
-
+            var initialCheckingDeposit = new Transaction()
+            {
+                Amount = 10,
+                Account = "Checking",
+                Type = "Deposit",
+            };
 
             // initialSavingDeposit.Amount = 10;
             // initialSavingDeposit.Account = "Saving";

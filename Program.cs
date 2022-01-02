@@ -97,15 +97,32 @@ namespace FirstBankOfSuncoast
 
                         if (checkingChoice == "1")
                         {
-                            var transaction = new Transaction();
+                            var transactionWithdraw = new Transaction();
 
 
-                            transaction.Account = "Checking";
-                            transaction.Amount = PromptForInteger("How much would you like to withdraw from checking");
-                            transaction.Type = "Withdraw";
+                            transactionWithdraw.Account = "Checking";
+                            transactionWithdraw.Amount = PromptForInteger("How much would you like to withdraw from checking");
+                            transactionWithdraw.Type = "Withdraw";
+                            database.AddTransaction(transactionWithdraw);
 
+                        }
+                        else if (checkingChoice == "2")
+                        {
+                            var transactionDeposit = new Transaction();
 
+                            transactionDeposit.Account = "Checking";
+                            transactionDeposit.Amount = PromptForInteger("How much would you like to withdraw from checking");
+                            transactionDeposit.Type = "Deposit";
+                            database.AddTransaction(transactionDeposit);
+                        }
 
+                        else if (checkingChoice == "3")
+                        {
+
+                        }
+                        else
+                        {
+                            Console.WriteLine("please choose a valid  action");
                         }
                         // displays checking sum
                         var totalCheckingDeposits = database.Transactions.

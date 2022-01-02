@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace FirstBankOfSuncoast
 {
@@ -41,7 +43,7 @@ namespace FirstBankOfSuncoast
             Console.WriteLine("What would you like to do?");
             Console.WriteLine("1. Checking ");
             Console.WriteLine("2. Saving ");
-            Console.WriteLine("3. Transfer ");
+            Console.WriteLine("3. Show transactions ");
             Console.WriteLine("4. Quit ");
             Console.WriteLine("**************************");
         }
@@ -49,7 +51,16 @@ namespace FirstBankOfSuncoast
         {
             var database = new TransactionDatabase();
             //database.LoadTransaction();
+
             var keepGoing = true;
+
+            var initialSavingDeposit = new Transaction();
+            initialSavingDeposit.Amount = 10;
+            initialSavingDeposit.Account = "Saving";
+            initialSavingDeposit.Type = "Deposit";
+            database.AddTransaction(initialSavingDeposit);
+
+
             DisplayGreeting();
 
 
@@ -81,7 +92,8 @@ namespace FirstBankOfSuncoast
 
                         break;
                     case "3":
-                        // ??
+
+
                         break;
                     case "4":
                         keepGoing = false;

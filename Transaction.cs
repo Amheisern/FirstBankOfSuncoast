@@ -7,7 +7,7 @@ namespace FirstBankOfSuncoast
             // checking or savings
             public string Account { get; set; }
             //How much
-            public string Amount { get; set; }
+            public int Amount { get; set; }
             // Deposit or Withdraw
             public string Type { get; set; }
             // public DateTime Date { get; set; } = DateTime.Now;

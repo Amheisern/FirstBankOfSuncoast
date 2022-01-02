@@ -101,7 +101,7 @@ namespace FirstBankOfSuncoast
 
 
                             transactionWithdraw.Account = "Checking";
-                            transactionWithdraw.Amount = PromptForInteger("How much would you like to withdraw from checking");
+                            transactionWithdraw.Amount = PromptForInteger("How much would you like to withdraw from checking: ");
                             transactionWithdraw.Type = "Withdraw";
                             database.AddTransaction(transactionWithdraw);
 
@@ -111,7 +111,7 @@ namespace FirstBankOfSuncoast
                             var transactionDeposit = new Transaction();
 
                             transactionDeposit.Account = "Checking";
-                            transactionDeposit.Amount = PromptForInteger("How much would you like to withdraw from checking");
+                            transactionDeposit.Amount = PromptForInteger("How much would you like to deposit from checking: ");
                             transactionDeposit.Type = "Deposit";
                             database.AddTransaction(transactionDeposit);
                         }
@@ -161,7 +161,7 @@ namespace FirstBankOfSuncoast
 
 
                             transactionWithdraw.Account = "Savings";
-                            transactionWithdraw.Amount = PromptForInteger("How much would you like to withdraw from checking");
+                            transactionWithdraw.Amount = PromptForInteger("How much would you like to withdraw from savings: ");
                             transactionWithdraw.Type = "Withdraw";
                             database.AddTransaction(transactionWithdraw);
 
@@ -171,7 +171,7 @@ namespace FirstBankOfSuncoast
                             var transactionDeposit = new Transaction();
 
                             transactionDeposit.Account = "Savings";
-                            transactionDeposit.Amount = PromptForInteger("How much would you like to withdraw from checking");
+                            transactionDeposit.Amount = PromptForInteger("How much would you like to deposit from savings: ");
                             transactionDeposit.Type = "Deposit";
                             database.AddTransaction(transactionDeposit);
                         }

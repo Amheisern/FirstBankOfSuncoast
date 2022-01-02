@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using System.IO;
+using System.Globalization;
+using CsvHelper;
 
 namespace FirstBankOfSuncoast
 {
@@ -15,6 +18,32 @@ namespace FirstBankOfSuncoast
                 Transactions.Add(newTransaction);
             }
 
+            private string FileName = "transaction.csv";
+            public void LoadTransaction()
+            {
+                if (File.Exists(FileName))
+                {
+                    var fileReader = new StreamReader(FileName);
+
+                    var csvReader = new CsvReader(fileReader, CultureInfo.InvariantCulture);
+
+                    // Replace our BLANK list of employees with the ones that are in the CSV file
+                    Transactions = csvReader.GetRecords<Transaction>().ToList();
+
+                    fileReader.Close();
+                }
+            }
+
+            public void SaveTransaction()
+            {
+                var fileWriter = new StreamWriter(FileName);
+
+                var csvWriter = new CsvWriter(fileWriter, CultureInfo.InvariantCulture);
+
+                csvWriter.WriteRecords(Transactions);
+
+                fileWriter.Close();
+            }
 
 
             // //public void CheckingSum(List<Transaction> transactions)

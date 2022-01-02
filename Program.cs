@@ -103,7 +103,14 @@ namespace FirstBankOfSuncoast
                             transactionWithdraw.Account = "Checking";
                             transactionWithdraw.Amount = PromptForInteger("How much would you like to withdraw from checking: ");
                             transactionWithdraw.Type = "Withdraw";
-                            database.AddTransaction(transactionWithdraw);
+                            // if (transactionWithdraw.Amount > TotalChecking(database))
+                            // {
+                            //     Console.WriteLine("nope");
+                            // }
+                            // else
+                            // {
+                            //     database.AddTransaction(transactionWithdraw);
+                            // }
 
                         }
                         else if (checkingChoice == "2")
@@ -119,21 +126,13 @@ namespace FirstBankOfSuncoast
                         else if (checkingChoice == "3")
                         {
                             // displays checking sum
-                            var totalCheckingDeposits = database.Transactions.
-                                        Where(transaction => transaction.Account == "Checking" && transaction.Type == "Deposit").
-                                        Sum(transaction => transaction.Amount);
-                            var totalCheckingWithdraw = database.Transactions.
-                                        Where(transaction => transaction.Account == "Checking" && transaction.Type == "Withdraw").
-                                        Sum(transaction => transaction.Amount);
-
-                            Console.WriteLine($" Your checking balance is {totalCheckingDeposits - totalCheckingWithdraw} ");
+                            TotalChecking(database);
                         }
                         else
                         {
                             Console.WriteLine("please choose a valid action");
                         }
-
-
+                        // save csv code
 
                         break;
                     case "2":
@@ -183,8 +182,8 @@ namespace FirstBankOfSuncoast
                         {
                             Console.WriteLine("please choose a valid action");
                         }
+                        // save csv code
                         break;
-
                     case "3":
                         // Display the number of transactions 
                         Console.WriteLine($"There are {database.Transactions.Count} transactions");
@@ -205,6 +204,19 @@ namespace FirstBankOfSuncoast
 
                 }
             }
+        }
+
+        private static void TotalChecking(TransactionDatabase database)
+        {
+            var totalCheckingDeposits = database.Transactions.
+                        Where(transaction => transaction.Account == "Checking" && transaction.Type == "Deposit").
+                        Sum(transaction => transaction.Amount);
+            var totalCheckingWithdraw = database.Transactions.
+                        Where(transaction => transaction.Account == "Checking" && transaction.Type == "Withdraw").
+                        Sum(transaction => transaction.Amount);
+
+            Console.WriteLine($" Your checking balance is {totalCheckingDeposits - totalCheckingWithdraw} ");
+            // return TotalChecking;
         }
     }
 }

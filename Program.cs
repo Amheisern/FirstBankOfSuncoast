@@ -122,7 +122,7 @@ namespace FirstBankOfSuncoast
                         }
                         else
                         {
-                            Console.WriteLine("please choose a valid  action");
+                            Console.WriteLine("please choose a valid action");
                         }
                         // displays checking sum
                         var totalCheckingDeposits = database.Transactions.
@@ -153,7 +153,37 @@ namespace FirstBankOfSuncoast
                         Console.WriteLine("2. Deposit ");
                         Console.WriteLine("3. Display ");
                         Console.WriteLine("**************************");
+                        var savingsChoice = Console.ReadLine();
 
+                        if (savingsChoice == "1")
+                        {
+                            var transactionWithdraw = new Transaction();
+
+
+                            transactionWithdraw.Account = "Savings";
+                            transactionWithdraw.Amount = PromptForInteger("How much would you like to withdraw from checking");
+                            transactionWithdraw.Type = "Withdraw";
+                            database.AddTransaction(transactionWithdraw);
+
+                        }
+                        else if (savingsChoice == "2")
+                        {
+                            var transactionDeposit = new Transaction();
+
+                            transactionDeposit.Account = "Savings";
+                            transactionDeposit.Amount = PromptForInteger("How much would you like to withdraw from checking");
+                            transactionDeposit.Type = "Deposit";
+                            database.AddTransaction(transactionDeposit);
+                        }
+
+                        else if (savingsChoice == "3")
+                        {
+
+                        }
+                        else
+                        {
+                            Console.WriteLine("please choose a valid action");
+                        }
                         break;
                     case "3":
                         // Display the number of transactions 

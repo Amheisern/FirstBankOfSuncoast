@@ -50,6 +50,7 @@ namespace FirstBankOfSuncoast
         static void Main(string[] args)
         {
             var database = new TransactionDatabase();
+            database.LoadTransaction();
             //database.LoadTransaction();
 
             var keepGoing = true;

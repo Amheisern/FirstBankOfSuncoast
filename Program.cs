@@ -111,6 +111,7 @@ namespace FirstBankOfSuncoast
                             else
                             {
                                 database.AddTransaction(transactionWithdraw);
+                                database.SaveTransaction();
                             }
 
                         }
@@ -120,7 +121,7 @@ namespace FirstBankOfSuncoast
                             var transactionDeposit = new Transaction();
 
                             transactionDeposit.Account = "Checking";
-                            transactionDeposit.Amount = PromptForInteger("How much would you like to deposit from checking: ");
+                            transactionDeposit.Amount = PromptForInteger("How much would you like to deposit in checking: ");
                             transactionDeposit.Type = "Deposit";
                             database.AddTransaction(transactionDeposit);
                             // save transaction to CSV
@@ -170,9 +171,10 @@ namespace FirstBankOfSuncoast
                             var transactionDeposit = new Transaction();
 
                             transactionDeposit.Account = "Savings";
-                            transactionDeposit.Amount = PromptForInteger("How much would you like to deposit from savings: ");
+                            transactionDeposit.Amount = PromptForInteger("How much would you like to deposit in savings: ");
                             transactionDeposit.Type = "Deposit";
                             database.AddTransaction(transactionDeposit);
+                            database.SaveTransaction();
                         }
 
                         // displays saving sum

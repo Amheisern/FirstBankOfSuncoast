@@ -2,3 +2,5 @@ Account,Amount,Type
 Saving,10,Deposit
 Checking,10,Deposit
 Checking,10,Deposit
+Savings,100,Deposit
+Savings,1,Withdraw

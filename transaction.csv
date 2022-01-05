@@ -4,3 +4,7 @@ Checking,10,Deposit
 Checking,10,Deposit
 Savings,100,Deposit
 Savings,1,Withdraw
+Checking,99,Deposit
+Savings,88,Deposit
+Checking,77,Withdraw
+Savings,77,Withdraw

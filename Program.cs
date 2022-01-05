@@ -36,7 +36,6 @@ namespace FirstBankOfSuncoast
                 return 0;
             }
         }
-        //--------------------------- methods and Classes -----------------------------
         static void ShowMenu()
         {
             Console.WriteLine("**************************");
@@ -47,6 +46,7 @@ namespace FirstBankOfSuncoast
             Console.WriteLine("4. Quit ");
             Console.WriteLine("**************************");
         }
+        //--------------------------- methods and Classes -----------------------------
         static void Main(string[] args)
         {
             var database = new TransactionDatabase();
@@ -106,7 +106,7 @@ namespace FirstBankOfSuncoast
                             transactionWithdraw.Type = "Withdraw";
                             if (transactionWithdraw.Amount > TotalChecking(database))
                             {
-                                Console.WriteLine("nope");
+                                Console.WriteLine("Nope");
                             }
                             else
                             {
@@ -162,8 +162,15 @@ namespace FirstBankOfSuncoast
                             transactionWithdraw.Account = "Savings";
                             transactionWithdraw.Amount = PromptForInteger("How much would you like to withdraw from savings: ");
                             transactionWithdraw.Type = "Withdraw";
-                            database.AddTransaction(transactionWithdraw);
-                            database.SaveTransaction();
+                            if (transactionWithdraw.Amount > SavingBalance(database))
+                            {
+                                Console.WriteLine("Nope");
+                            }
+                            else
+                            {
+                                database.AddTransaction(transactionWithdraw);
+                                database.SaveTransaction();
+                            }
                         }
                         // SAVING DEPOSIT
                         else if (savingsChoice == "2")
@@ -179,16 +186,7 @@ namespace FirstBankOfSuncoast
 
                         // displays saving sum
                         else if (savingsChoice == "3")
-                        {
-                            var totalSavingsDeposits = database.Transactions.
-                                       Where(transaction => transaction.Account == "Savings" && transaction.Type == "Deposit").
-                                       Sum(transaction => transaction.Amount);
-                            var totalSavingsWithdraw = database.Transactions.
-                                        Where(transaction => transaction.Account == "Savings" && transaction.Type == "Withdraw").
-                                        Sum(transaction => transaction.Amount);
-
-                            Console.WriteLine($" Your savings balance is {totalSavingsDeposits - totalSavingsWithdraw} ");
-                        }
+                            SavingBalance(database);
                         else
                         {
                             Console.WriteLine("please choose a valid action");
@@ -218,6 +216,19 @@ namespace FirstBankOfSuncoast
             }
         }
 
+        private static int SavingBalance(TransactionDatabase database)
+        {
+            var totalSavingsDeposits = database.Transactions.
+                       Where(transaction => transaction.Account == "Savings" && transaction.Type == "Deposit").
+                       Sum(transaction => transaction.Amount);
+            var totalSavingsWithdraw = database.Transactions.
+                        Where(transaction => transaction.Account == "Savings" && transaction.Type == "Withdraw").
+                        Sum(transaction => transaction.Amount);
+            var currentSavingBalance = totalSavingsDeposits - totalSavingsWithdraw;
+            Console.WriteLine($" Your savings balance is {totalSavingsDeposits - totalSavingsWithdraw} ");
+            return currentSavingBalance;
+        }
+
         private static int TotalChecking(TransactionDatabase database)
         {
             var totalCheckingDeposits = database.Transactions.
@@ -226,9 +237,11 @@ namespace FirstBankOfSuncoast
             var totalCheckingWithdraw = database.Transactions.
                         Where(transaction => transaction.Account == "Checking" && transaction.Type == "Withdraw").
                         Sum(transaction => transaction.Amount);
-
+            var currentCheckingBalance = totalCheckingDeposits - totalCheckingWithdraw;
             Console.WriteLine($" Your checking balance is {totalCheckingDeposits - totalCheckingWithdraw} ");
-            return TotalChecking(database);
+            return currentCheckingBalance;
+            //(int)TotalChecking(database);
+
         }
     }
 }
